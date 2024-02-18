@@ -1,0 +1,78 @@
+version: '3.1'
+
+services:
+
+  postgres-db:
+    image: postgres
+    container_name: postgres-db
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: postgresadmin
+      POSTGRES_PASSWORD: 234JzZP119
+    ports:
+      - 5432:5432
+      
+      
+  maria-db:
+    image: mariadb:10.5
+    restart: unless-stopped
+    container_name: maria-db
+    volumes:
+      - maria_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: 234JzZP119
+      TZ: Asia/Bangkok
+    ports:
+      - 3306:3306
+       
+       
+  mongo_db:
+    image: mongo
+    restart: unless-stopped
+    container_name: mongo_db
+    volumes:
+      - mongo_data:/etc/mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 234JzZP11
+   
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - '8093:80'
+    links:
+      - maria-db
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: 234JzZP119
+      PMA_HOST: maria-db
+      PMA_ARBITRARY: 1
+      UPLOAD_LIMIT: 20G
+      MAX_EXECUTION_TIME: 1200
+      MEMORY_LIMIT: 1024M
+    
+  
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo_express
+    restart: unless-stopped
+    ports:
+      - 8091:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 234JzZP11
+      ME_CONFIG_MONGODB_URL: "mongodb://admin:234JzZP11@mongo_db:27017"
+
+volumes:
+  postgres_data:
+  maria_data:
+  mongo_data:
