@@ -11,7 +11,7 @@ services:
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_USER: postgresadmin
-      POSTGRES_PASSWORD: 234JzZP119
+      POSTGRES_PASSWORD: 234Jz56fFs67
     ports:
       - 5432:5432
       
@@ -24,7 +24,7 @@ services:
       - maria_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_HOST: '%'
-      MYSQL_ROOT_PASSWORD: 234JzZP119
+      MYSQL_ROOT_PASSWORD: 234Jz56fFs67
       TZ: Asia/Bangkok
     ports:
       - 3306:3306
@@ -40,7 +40,7 @@ services:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: 234JzZP11
+      MONGO_INITDB_ROOT_PASSWORD: 234Jz56fFs67
    
   
   phpmyadmin:
@@ -53,7 +53,7 @@ services:
       - maria-db
     environment:
       MYSQL_USERNAME: root
-      MYSQL_ROOT_PASSWORD: 234JzZP119
+      MYSQL_ROOT_PASSWORD: 234Jz56fFs67
       PMA_HOST: maria-db
       PMA_ARBITRARY: 1
       UPLOAD_LIMIT: 20G
@@ -69,8 +69,8 @@ services:
       - 8091:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: 234JzZP11
-      ME_CONFIG_MONGODB_URL: "mongodb://admin:234JzZP11@mongo_db:27017"
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 234Jz56fFs67
+      ME_CONFIG_MONGODB_URL: "mongodb://admin:234Jz56fFs67@mongo_db:27017"
 
   pgadmin:
     image: dpage/pgadmin4
@@ -80,7 +80,7 @@ services:
       - "8888:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: 234JzZP119
+      PGADMIN_DEFAULT_PASSWORD: 234Jz56fFs67
     volumes:
       - pgadmin-data:/var/lib/pgadmin
 
